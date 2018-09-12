@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <parameter name="browser" value="chrome"/>
+  <parameter name="Url" value="inViaUrl"/>
+  <test name="moengage Test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="Url" value="inViaUrl"/>
+    <classes>
+      <class name="com.moengage.app.restCase.CreateCampaignTestCase">
+        <methods>
+          <include name="createCompign"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- com.moengage.app.restCase.CreateCampaignTestCase -->
+    </classes>
+  </test> <!-- moengage Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

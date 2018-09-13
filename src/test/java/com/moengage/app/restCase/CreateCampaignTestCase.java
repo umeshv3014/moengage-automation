@@ -2,7 +2,7 @@ package com.moengage.app.restCase;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.moengage.app.pages.HomePage;
@@ -11,9 +11,9 @@ import com.moengage.utill.PageHandler;
 import com.moengage.utill.TestDataFileHandler;
 
 public class CreateCampaignTestCase extends PageHandler {
-	LoginPage loginPage;
-	HomePage homePage;
-	TestDataFileHandler testdata;
+	public LoginPage loginPage;
+	public HomePage homePage;
+	public TestDataFileHandler testdata;
 
 	@BeforeClass
 	public void datafetch() {
@@ -21,9 +21,10 @@ public class CreateCampaignTestCase extends PageHandler {
 		testdata.loadConfigProperties();
 	}
 
-	@BeforeTest
+	@BeforeMethod
 	public void setup() {
-		openBrowsers(testdata.getPropertyValue("baseUrl"));
+		String urlToRun = testdata.getPropertyValue("baseUrl");
+		openBrowsers(urlToRun);
 	}
 
 	@Test(priority = 0)

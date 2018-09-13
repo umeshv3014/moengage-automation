@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.moengage.utill.PageHandler;
 
-public class LoginPage {
+public class LoginPage extends PageHandler {
 	WebDriver driver;
 
 	public LoginPage(WebDriver driver) {
@@ -16,30 +16,12 @@ public class LoginPage {
 	}
 
 	@FindBy(id = "signin-email")
-	static WebElement signinEmail;
+	public static WebElement signinEmail;
 
 	@FindBy(id = "signin-password")
-	static WebElement signinPassword;
+	public static WebElement signinPassword;
 
 	@FindBy(xpath = "//form[@name='signinForm']//button[@type='submit']")
-	static WebElement signinButton;
+	public static WebElement signinButton;
 
-	public static void enterEmail(String emailId) {
-		signinEmail.sendKeys(emailId);
-		;
-	}
-
-	public static void enterPassword(String password) {
-		signinPassword.sendKeys(password);
-	}
-
-	public static void clickLoginBtn() {
-		signinButton.click();
-	}
-
-	public void loginToMoengage(String emailID, String password) {
-		enterEmail(emailID);
-		enterPassword(password);
-		clickLoginBtn();
-	}
 }

@@ -5,15 +5,22 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.moenagage.app.pages.actions.HomePageActions;
+import com.moenagage.app.pages.actions.LoginPageActions;
 import com.moengage.app.pages.HomePage;
 import com.moengage.app.pages.LoginPage;
+import com.moengage.utill.Constant;
+import com.moengage.utill.DataProviderParameters;
 import com.moengage.utill.PageHandler;
+import com.moengage.utill.TestCaseDataProvider;
 import com.moengage.utill.TestDataFileHandler;
 
 public class CreateCampaignTestCase extends PageHandler {
-	public LoginPage loginPage;
-	public HomePage homePage;
 	public TestDataFileHandler testdata;
+	public LoginPage loginPage;
+	public LoginPageActions loginPageActions;
+	public HomePage homePage;
+	public HomePageActions homePageAction;
 
 	@BeforeClass
 	public void datafetch() {
@@ -27,46 +34,49 @@ public class CreateCampaignTestCase extends PageHandler {
 		openBrowsers(urlToRun);
 	}
 
-	@Test(priority = 0)
+	@Test(dataProvider = "inputTestData", dataProviderClass = TestCaseDataProvider.class)
+	  @DataProviderParameters(path = Constant.CreatCampTestData,
+	      sheetName = Constant.CreatCampTestData_SheetName)
 	public void createcamp() throws InterruptedException {
-		loginPage = new LoginPage(driver);
-		homePage = new HomePage(driver);
-		loginPage.loginToMoengage("moeautouser@gmail.com", "dosalike1!");
-		homePage.clickToOpenCampaignsList();
-		homePage.selectCreateCampaigns();
-		homePage.SelectGenralCreate();
-		homePage.NameTheCampaign("ramasfr");
-		homePage.choosePlatformToRunCampaign();
-		homePage.selectUserActions();
-		// homePage.selectUsersegmentation();
-		homePage.selectUserActionsFromList("AUTO_TEST_Searched");
-		homePage.proceedToMessaging();
-		homePage.enterMessageTitle("@Name");
-		homePage.enterMessage("test");
-		homePage.selectRichContent("Coupon");
-		homePage.enterCouponCode("RAMRAM");
-		homePage.selectRichContent("Image");
-		homePage.enterImageURL("asdfasdf");
-		homePage.selectActions();
-		homePage.selectDefaultClickAction("Navigate to a screen");
-		homePage.selectActionsandroidnavigation();
-		homePage.selectAndroidnavigation("com.moengage.demoapp.DemoScreen");
-		homePage.setAdditionalKeyValuepairs_androidnavigation("test");
-		homePage.enableFallBackMessage();
-		homePage.enterFallbackMessage("test");
-		homePage.proceedToMessaging();
-		homePage.dateSelector("02", "October 2018");
-		homePage.minut_updater(50);
-		homePage.am_pm_updater("AM");
-		homePage.setConversionGoal_Tracks();
-		homePage.setConversionGoal_goal_event();
-		homePage.setConversionGoal_goal_event_list("AUTO_TEST_Searched");
-		homePage.set_revenue();
-		homePage.setRevenuecurrencylist("amount");
-		homePage.selectCurrency();
-		homePage.selectCurrency_list("US Dollar - USD");
-		homePage.createCampBtn();
-		homePage.createCamp();
+		homePageAction = new HomePageActions(driver);
+		loginPageActions = new LoginPageActions(driver);
+		loginPageActions.loginToMoengage(testdata.getPropertyValue("email"),
+				testdata.getPropertyValue("password"));;
+		homePageAction.clickToOpenCampaignsList();
+		homePageAction.selectCreateCampaigns();
+		homePageAction.SelectGenralCreate();
+		homePageAction.NameTheCampaign("ramasfr");
+		homePageAction.choosePlatformToRunCampaign();
+		homePageAction.selectUserActions();
+		homePageAction.selectUserActionsFromList("AUTO_TEST_Searched");
+		homePageAction.proceedToMessaging();
+		homePageAction.enterMessageTitle("@Name");
+		homePageAction.enterMessage("test");
+		homePageAction.selectRichContent("Coupon");
+		homePageAction.enterCouponCode("RAMRAM");
+		homePageAction.selectRichContent("Image");
+		homePageAction.enterImageURL("asdfasdf");
+		homePageAction.selectActions();
+		homePageAction.selectDefaultClickAction("Navigate to a screen");
+		homePageAction.selectActionsandroidnavigation();
+		homePageAction
+				.selectAndroidnavigation("com.moengage.demoapp.DemoScreen");
+		homePageAction.setAdditionalKeyValuepairs_androidnavigation("test");
+		homePageAction.enableFallBackMessage();
+		homePageAction.enterFallbackMessage("test");
+		homePageAction.proceedToMessaging();
+		homePageAction.dateSelector("02", "October 2018");
+		homePageAction.minut_updater(50);
+		homePageAction.am_pm_updater("AM");
+		homePageAction.setConversionGoal_Tracks();
+		homePageAction.setConversionGoal_goal_event();
+		homePageAction.setConversionGoal_goal_event_list("AUTO_TEST_Searched");
+		homePageAction.set_revenue();
+		homePageAction.setRevenuecurrencylist("amount");
+		homePageAction.selectCurrency();
+		homePageAction.selectCurrency_list("US Dollar - USD");
+		homePageAction.createCampBtn();
+		homePageAction.createCamp();
 	}
 
 	@AfterSuite

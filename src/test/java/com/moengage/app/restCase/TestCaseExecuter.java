@@ -5,10 +5,12 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import com.moenagage.app.pages.actions.HomePageActions;
 import com.moengage.utill.Log;
 import com.moengage.utill.TestCaseExcelConstant;
 
 public class TestCaseExecuter {
+	HomePageActions homePageAction;
 	public TestCaseExecuter(WebDriver driver) {
 		super();
 		this.driver = driver;
@@ -19,11 +21,13 @@ public class TestCaseExecuter {
 	public void execute(Map<Integer, String> testData) throws Exception {
 		String url = null;
 		boolean login = false;
-		String paymentMode = testData
-				.get(TestCaseExcelConstant.COL_PAYMENT_MODE);
-		String paymentType = testData
-				.get(TestCaseExcelConstant.COL_PAYMENT_TYPE);
+		String nameOfCamoagin = testData
+				.get(TestCaseExcelConstant.NameTheCampaign);
+		String userAction = testData
+				.get(TestCaseExcelConstant.SelectUserAction);
 		try {
+			homePageAction = new HomePageActions(driver);
+			homePageAction.clickToOpenCampaignsList();
 		} catch (Exception e) {
 
 			Log.error(driver, e.getMessage());

@@ -16,8 +16,6 @@ public class Constant {
 
 	public static final int IMPLICIT_WAIT_TIME = 20;
 
-	public static final int ONWARD_JOURNEY = 0;
-	public static final int RETURN_JOURNEY = 1;
 
 	public static final String WHITESPACE = " ";
 	public static final String COMMA = ",";

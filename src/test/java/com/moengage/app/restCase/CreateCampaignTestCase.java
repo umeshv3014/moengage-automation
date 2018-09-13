@@ -1,20 +1,29 @@
 package com.moengage.app.restCase;
 
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.moengage.app.pages.HomePage;
 import com.moengage.app.pages.LoginPage;
 import com.moengage.utill.PageHandler;
+import com.moengage.utill.TestDataFileHandler;
 
 public class CreateCampaignTestCase extends PageHandler {
 	LoginPage loginPage;
 	HomePage homePage;
+	TestDataFileHandler testdata;
+
+	@BeforeClass
+	public void datafetch() {
+		testdata = new TestDataFileHandler();
+		testdata.loadConfigProperties();
+	}
 
 	@BeforeTest
 	public void setup() {
-		openBrowsers("http://app.moengage.com/v3/auth/#/");
+		openBrowsers(testdata.getPropertyValue("baseUrl"));
 	}
 
 	@Test(priority = 0)
@@ -28,7 +37,7 @@ public class CreateCampaignTestCase extends PageHandler {
 		homePage.NameTheCampaign("ramasfr");
 		homePage.choosePlatformToRunCampaign();
 		homePage.selectUserActions();
-		//homePage.selectUsersegmentation();
+		// homePage.selectUsersegmentation();
 		homePage.selectUserActionsFromList("AUTO_TEST_Searched");
 		homePage.proceedToMessaging();
 		homePage.enterMessageTitle("@Name");

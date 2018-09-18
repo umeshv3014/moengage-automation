@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.Select;
 import com.moengage.app.pages.HomePage;
 
 public class HomePageActions extends HomePage {
-	public WebDriver driver;
 
 	public HomePageActions(WebDriver driver) {
 		super(driver);
@@ -25,6 +24,7 @@ public class HomePageActions extends HomePage {
 	}
 
 	public void selectUserActionsFromList(String value) {
+		selectUserActions();
 		enterUserActionsList(value);
 		for (int i = 0; i < selectUserActionsList.size(); i++) {
 			WebElement list = selectUserActionsList.get(i);
@@ -83,14 +83,24 @@ public class HomePageActions extends HomePage {
 		enterMessage.sendKeys(message);
 	}
 
-	public void selectRichContent(String text) {
+	public void selectRichContent_coupon(String text) {
 		richContent.click();
-		Select select = new Select(selectContent);
+		Select select = new Select(selectContent_Coupon);
+		select.selectByVisibleText(text);
+	}
+	
+	public void selectRichContent_image(String text) {
+		//selectContent_Image.click();
+		Select select = new Select(selectContent_Image);
 		select.selectByVisibleText(text);
 	}
 
 	public void enterCouponCode(String message) {
 		couponCode.sendKeys(message);
+	}
+
+	public void addAnotherImage() {
+		Addanother_image.click();
 	}
 
 	public void enterImageURL(String url) {
@@ -127,9 +137,9 @@ public class HomePageActions extends HomePage {
 
 	public void setAdditionalKeyValuepairs_androidnavigation(String value1) {
 		for (int i = 2; i <= 3; i++) {
-			WebElement xpath = driver.findElement(By
-					.xpath(".//*[@id='androidnavigation']/div[2]/div[" + i
-							+ "]/div[4]/button"));
+			String path = ".//*[@id='androidnavigation']/div[2]/div[" + i
+					+ "]/div[4]/button";
+			WebElement xpath = driver.findElement(By.xpath(path));
 			xpath.click();
 		}
 		for (int i = 0; i < androidnavigation_AddtionalKey.size(); i++) {
@@ -145,6 +155,10 @@ public class HomePageActions extends HomePage {
 		actions.sendKeys(message);
 		actions.build().perform();
 		// fallBackMessage.sendKeys(message);
+	}
+	
+	public void selectFAllBackMessageAction(){
+		fallBackMessage_action.click();
 	}
 
 	public void enterSchedulingGoalsDate(String message) {
@@ -185,7 +199,7 @@ public class HomePageActions extends HomePage {
 
 	public void am_pm_updater(String am_pm) {
 		am_pm_text.getText();
-		if (am_pm.equals(am_pm_text.getText())) {
+		if (am_pm.equalsIgnoreCase(am_pm_text.getText())) {
 			System.out.println(am_pm + "selected ");
 		} else {
 			am_pm_text.click();
@@ -202,7 +216,12 @@ public class HomePageActions extends HomePage {
 		goal_event.click();
 	}
 
+	public void setConversionalGoalList(String value) {
+		goal_event_List.sendKeys(value);
+	}
+
 	public void setConversionGoal_goal_event_list(String value) {
+		setConversionalGoalList(value);
 		for (int i = 0; i < goal_event_list.size(); i++) {
 			WebElement list = goal_event_list.get(i);
 			if (list.getText().equals(value)) {
@@ -217,7 +236,13 @@ public class HomePageActions extends HomePage {
 		Set_revenue.click();
 	}
 
+	public void setCurrency(String value) {
+		selectCurrencyText.sendKeys(value);
+	}
+
 	public void setRevenuecurrencylist(String value) {
+		set_revenue();
+		setCurrency(value);
 		for (int i = 0; i < Set_Revenue_currency_list.size(); i++) {
 			WebElement list = Set_Revenue_currency_list.get(i);
 			if (list.getText().equals(value)) {
@@ -232,7 +257,12 @@ public class HomePageActions extends HomePage {
 		selectCurrency.click();
 	}
 
+	public void selectCurrencyText(String value) {
+		select_currency_chosen.sendKeys(value);
+	}
+
 	public void selectCurrency_list(String value) {
+		selectCurrencyText(value);
 		for (int i = 0; i < selectCurrency_list.size(); i++) {
 			WebElement list = selectCurrency_list.get(i);
 			if (list.getText().equals(value)) {

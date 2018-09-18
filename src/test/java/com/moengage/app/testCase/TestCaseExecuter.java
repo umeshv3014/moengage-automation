@@ -1,4 +1,4 @@
-package com.moengage.app.restCase;
+package com.moengage.app.testCase;
 
 import java.util.Map;
 
@@ -21,10 +21,10 @@ public class TestCaseExecuter {
 	public void execute(Map<Integer, String> testData) throws Exception {
 		String url = null;
 		boolean login = false;
-		String nameOfCamoagin = testData
-				.get(TestCaseExcelConstant.NameTheCampaign);
-		String userAction = testData
-				.get(TestCaseExcelConstant.SelectUserAction);
+	//	String nameOfCamoagin = testData
+		//		.get(TestCaseExcelConstant.NameTheCampaign);
+	//	String paymentType = testData
+		//		.get(TestCaseExcelConstant.SelectUserAction);
 		try {
 			homePageAction = new HomePageActions(driver);
 			homePageAction.clickToOpenCampaignsList();

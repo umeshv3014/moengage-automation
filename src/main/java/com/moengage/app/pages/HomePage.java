@@ -67,11 +67,17 @@ public class HomePage extends PageHandler {
 	public static WebElement richContent;
 
 	@FindBy(xpath = ".//*/div/md-card/md-card-content/div[2]/div[2]/select")
-	public static WebElement selectContent;
+	public static WebElement selectContent_Coupon;
+	
+	@FindBy(xpath = ".//*/div/md-card[2]/md-card-content[1]//select")
+	public static WebElement selectContent_Image;
 
 	@FindBy(xpath = ".//*[@id='coupon']/div[2]/input")
 	public static WebElement couponCode;
 
+	@FindBy(xpath = ".//md-content//md-content[1]//button/span[text()='Add another']")
+	public static WebElement Addanother_image;
+	
 	@FindBy(xpath = ".//*[@id='image']/input")
 	public static WebElement image;
 
@@ -101,7 +107,9 @@ public class HomePage extends PageHandler {
 
 	@FindBy(xpath = ".//div[@class='pushForm']/md-content[2]/md-tabs/md-tabs-content-wrapper/md-tab-content[1]/div/div[1]/div[2]")
 	public static WebElement fallBackMessage;
-
+	
+	@FindBy(xpath = ".//md-content//md-content[2]//md-pagination-wrapper//md-tab-item[3]")
+	public static WebElement fallBackMessage_action;
 	// Scheduling & Goals
 	@FindBy(xpath = "//input[contains(@datepicker-popup,'MM/dd/yyyy')]")
 	public static WebElement scheduling_Goals_date;
@@ -124,6 +132,9 @@ public class HomePage extends PageHandler {
 	@FindBy(xpath = "//span[contains(text(),'Select Event')]")
 	public static WebElement goal_event;
 
+	@FindBy(xpath = "//span[contains(text(),'Select Event')]/parent::a/parent::div/div[1]/div/input")
+	public static WebElement goal_event_List;
+
 	@FindBy(xpath = "//md-content//span[2]//div/ul/li")
 	public static List<WebElement> goal_event_list;
 
@@ -137,6 +148,12 @@ public class HomePage extends PageHandler {
 	@FindBy(xpath = "//span[text()='Select Currency']")
 	public static WebElement selectCurrency;
 
+	@FindBy(xpath = ".//*[@id='select_attr_chosen']/div/div/input")
+	public static WebElement selectCurrencyText;
+
+	@FindBy(xpath = ".//*[@id='select_currency_chosen']/div/div/input")
+	public static WebElement select_currency_chosen;
+	
 	@FindBy(xpath = "//*[@id='select_currency_chosen']/div/ul/li")
 	public static List<WebElement> selectCurrency_list;
 

@@ -52,4 +52,10 @@ public class PageHandler {
 			System.out.println(e.getStackTrace());
 		}
 	}
+	
+	public static void clickWithExpelicityWait(WebDriver driver, WebElement element, int time) {
+	    WebDriverWait wait = new WebDriverWait(driver, time);
+	    wait.until(ExpectedConditions.elementToBeClickable(element));
+	    element.click();
+	  }
 }

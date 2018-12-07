@@ -53,8 +53,8 @@ public class CreateCampaignTestCase extends PageHandler {
 		Thread.sleep(3000);
 		homePageAction.NameTheCampaign("ramasfr");
 		homePageAction.choosePlatformToRunCampaign();
-	//	homePageAction.selectUserActions();//need to check 
-		homePageAction.selectUserActionsFromList("AUTO_TEST_Searched");
+	//	homePageAction.selectUserActions(); need to check 
+		homePageAction.selectUserActionsFromList("AUTO_TEST_searched");
 		homePageAction.proceedToMessaging();
 		homePageAction.enterMessageTitle("@Name");
 		homePageAction.enterMessage("test");

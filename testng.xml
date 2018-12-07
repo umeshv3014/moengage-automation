@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+	<listeners>
+		<listener class-name="retryFailTestCase.MyTransformAnnotation"></listener>
+	</listeners>
 	<test verbose="2" name="moengage Test">
 		<parameter name="browser" value="chrome" />
 		<parameter name="Url" value="inViaUrl" />
 		<classes>
-			<class name="com.moengage.app.restCase.CreateCampaignTestCase" />
+			<class name="com.moengage.app.testCase.GroupTesting" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -90,7 +90,6 @@ public class HomePageActions extends HomePage {
 	}
 	
 	public void selectRichContent_image(String text) {
-		//selectContent_Image.click();
 		Select select = new Select(selectContent_Image);
 		select.selectByVisibleText(text);
 	}
